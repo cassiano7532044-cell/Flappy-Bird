@@ -1,0 +1,321 @@
+/* FLAPPY BIRD - ESTILOS
+Cada tema é um conjunto de variáveis CSS (custom properties)
+aplicado via atributo data-theme no <html>. Trocar de tema 
+é só trocar essas variáveis - o resto do CSS não muda. */
+
+:root{
+    /* Tema Padrão: "Dia" */
+    --sky-top: #7ec8f2;
+    --sky-bottom: #e8f7c9;
+    --bird-color: #ffcc33;
+    --bird-belly: #ff9933;
+    --pipe-color: #4caf50;
+    --pipe-dark: #2e7d32;
+    --ground-color: #ded17a;
+    --ground-dark: #b7a856;
+    --text-color: #1c2b1c;
+    --panel-bg: rgba(255,255,255,0.85);
+    --accent: #ff7043;
+}
+
+[data-theme="night"]{
+    /* Tema Padrão: "Noite" */
+    --sky-top: #0b1030;
+    --sky-bottom: #2b2d6e;  
+    --bird-color: #ffe28a;
+    --bird-belly: #ffb347;
+    --pipe-color: #3b3f8f;
+    --pipe-dark: #23255a;
+    --ground-color: #2a2a45;
+    --ground-dark: #17172a;
+    --text-color: #f0f0ff;
+    --panel-bg: rgba(20,20,40,0.85);
+    --accent: #8c9eff;
+}
+
+[data-theme="sunset"]{
+/* Tema Padrão: "Pôr do Sol" */
+    --sky-top: #ff9a56;
+    --sky-bottom: #4a1942;
+    --bird-color: #ffd23f;
+    --bird-belly: #ee6c4d;
+    --pipe-color: #c1440e;
+    --pipe-dark: #7a2b09;
+    --ground-color: #5c3a21;
+    --ground-dark: #3b2414;
+    --text-color: #fff3e0;
+    --panel-bg: rgba(40,15,20,0.85);
+    --accent: #ffd23f;
+}
+
+[data-theme="ocean"]{
+    /* Tema Padrão: "Oceano" */
+    --sky-top: #004d66;
+    --sky-bottom: #00cfc8;
+    --bird-color: #ffe66d;
+    --bird-belly: #ff6b6b;
+    --pipe-color: #006d77;
+    --pipe-dark: #003d42;
+    --ground-color: #83c5be;
+    --ground-dark: #4a908a;
+    --text-color: #e0fbfc;
+    --panel-bg: rgba(o,30,40,0.85);
+    --accent: #83c5be;
+}
+
+[data-theme="sakura"]{
+    /* Tema Padrão: "Sakura" */
+    --sky-top: #ffd9e8;
+    --sky-bottom: #ff88bb;
+    --bird-color: #ffffff;
+    --bird-belly: #ff6f9c;
+    --pipe-color: #d46a91;
+    --pipe-dark: #99456a;
+    --ground-color: #f7c5d8;
+    --ground-dark: #d99cb5;
+    --text-color: #4a1e2e;
+    --panel-bg: rgba(60,20,35,0.75);
+    --accent: #ff6f9c;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: #111;
+    color: var(--text-color);
+    transition: color 0.4s ease;
+}
+
+header{
+    width:100%;
+    text-align: center;
+    padding: 8px;
+    background: #000;
+    color: #ddd;
+    font-size: 0.85rem;
+}
+
+main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+}
+
+#game-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    max-width: 720px;
+}
+
+#side-panel{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 260px;
+}
+
+#title{
+    text-align: center;
+}
+
+#title h1{
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+#score-board{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 6px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+#board-wrapper{
+    display: flex;
+    justify-content: center;
+    flex: 0 1 360px;
+}
+
+#game-board{
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 4px solid #222;
+    background: linear-gradient(var(--sky-top),var(--sky-bottom));
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+#bird{
+    position: absolute;
+    width: 30px;
+    height: 24px;
+    left: 25%;
+    top: 45%;
+    background: var(--bird-color);
+    border-radius: 50% 50% 50% 20%/60% 60% 40% 40%;
+    box-shadow: inset -4px -3px 0 var(--bird-belly);
+    z-index: 5;
+    will-change: transform, top;
+}
+
+#pipes-layer{
+    position: absolute;
+    inset: 0;
+}
+
+.pipe{
+    position: absolute;
+    width: 52px;
+    background: var(--pipe-color);
+    border: 3px solid var(--pipe-dark);
+    z-index: 3;
+}
+
+.pipe-top{
+    top: 0;
+    border-top: none;
+}
+
+.pipe-bottom{
+    bottom: 14px;
+    border-bottom: none;
+}
+
+#ground{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 14%;
+    background: repeating-linear-gradient(90deg, var(--ground-color)0px, var(--ground-color) 10px, var(--ground-dark)10px, var(--ground-dark)20px);
+    z-index: 4;
+}
+
+.overlay{
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0 ,0 ,0 , 0.55);
+    color: #fff;
+}
+
+.overlay.hidden{
+    display: none;
+}
+
+.overlay span{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.overlay p{
+    font-size: 0.85rem;
+    max-width: 240px;
+}
+
+.overlay button{
+    margin-top: 6px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #1a1a1a;
+    font-weight: bold;
+cursor: pointer;
+font-size: 0.95rem;
+}
+
+.overlay button:hover{
+    filter: brightness(1.1);
+}
+
+#controls-panel{
+    width: 100%;
+    max-width: 360px;
+    background: var(--panel-bg);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #1a1a1a;
+}
+
+#theme-row{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+.theme-btn{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.theme-btn.active{
+    border-color: #333;
+    transform: scale(1.15);
+}
+
+#controls-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.ctrl-btn{
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #1a1a1a;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.ctrl-btn:hover{
+    filter: brightness(1.1);
+}
+
+    footer{
+        padding: 10;
+        color: #888;
+        font-size: 0.75rem;
+        text-align: center;
+    }

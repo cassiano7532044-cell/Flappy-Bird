@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Flappy Bird</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <header>
+  <aside>
+   <b>Espaço</b>/ toque no tabuleiro pular &nbsp;|&nbsp; <b>C</b> começar &nbsp;|&nbsp;<b>P</b>pausar &nbsp;|&nbsp;<b>R</b>reiniciar
+  </aside>
+ </header>
+ <main>
+  <div id="game-container">
+   <div id="board-wrapper">
+    <section id="game-board" aria-label="Tabuleiro do Jogo">
+     <div id="bird"></div>
+     <div id="pipes-layer"></div>
+     <div id="ground"></div>
+
+     <div id="start-screen" class="overlay">
+      <span>Flappy Bird</span>
+      <p>Pressione <b>Espaço</b> ou toque na tela para começar</p>
+      <button id="start-button">Começar</button>
+     </div>
+     <div id="pause-screen" class="overlay hidden">
+      <span>Pausado</span>
+      <p>Pressione <b>P</b> ou toque no botão continuar</p>
+      <button id="resume-button">Continuar</button>
+     </div>
+     <div id="game-over-screen" class="overlay hidden">
+      <span>Game Over</span>
+      <p id="final-score-text"></p>
+      <button id="restart-button">Reiniciar</button>
+     </div>
+    </section>
+   </div>
+   <div id="side-panel">
+    <div id="title">
+     <h1>Flappy Bird</h1>
+     <section id="score-board" aria-label="Painel de Pontuação">
+      <div>Placar: <span id="score">0</span></div>
+      <div>Recorde: <span id="high-score">0</span></div>
+      <div>Fase: <span id="level">1</span></div>
+     </section>
+    </div>
+    <div id="controls-panel">
+     <div id="theme-row">
+      <span>Tema:</span>
+      <button class="theme-btn active" data-theme="default" title="Dia(padrão)" style="background: linear-gradient(#7ec8f2, #e8f7c9) ;"></button>
+      <button class="theme-btn" data-theme="night" title="Noite" style="background: linear-gradient(#0b1030, #2b2d6e);"></button>
+      <button class="theme-btn" data-theme="sunset" title="Pôr do Sol" style="background: linear-gradient(#ff9a56,#4a1942);"></button>
+      <button class="theme-btn" data-theme="ocean" title="Oceano" style="background: linear-gradient(#004d66, #00cfc8);"></button>
+      <button class="theme-btn" data-theme="sakura" title="Sakura" style="background: linear-gradient(#ffd9e8, #ff88bb);"></button>
+     </div>
+     <div id="controls-row">
+      <button class="ctrl-btn" id="btn-start">▶ Começar</button>
+      <button class="ctrl-btn" id="btn-pause">∥ Pausar</button>
+      <button class="ctrl-btn" id="btn-reset">↺ Reiniciar</button>
+      <button class="ctrl-btn" id="btn-del-hs">🗑️Deletar Recorde</button>
+     </div>
+    </div>
+   </div>
+  </div>
+ </main>
+ <footer>Desenvolvido por Claude - Flappy Bird</footer>
+ <script src="script.js"></script>
+ </body>
+</html>
